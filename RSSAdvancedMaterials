@@ -2,7 +2,6 @@ import pandas as pd
 import feedparser
 import requests
 from bs4 import BeautifulSoup
-import pickle
 
 # ----------------------------- RSS crawling and parsing from the journal "Advanced Materials" (sort : most recent)
 
@@ -10,7 +9,7 @@ parse_rss = feedparser.parse("https://onlinelibrary.wiley.com/feed/15214095/most
 
 # RSS filtering keywords import from "keywords.txt"
 
-f = open("keywords.txt", 'r')
+f = open("DatabaseKeywords.txt", 'r')
 lines = f.readlines()
 
 keywords = []
@@ -40,10 +39,6 @@ for p in parse_rss.entries:
                 else:
                     continue
 
-# ----------------------------- RSS duplicated test from pickle database
+# ----------------------------- RSS duplicated test from txt database
 
-AdvMatDOIDatabase = ['10.1002/adma.202205326', '10.1002/adma.202370097', '10.1002/adma.202211579']
-
-with open('AdvMatDOIDatabase.pickle', 'wb') as f:
-    pickle.dump(AdvMatDOIDatabase, f, pickle.HIGHEST_PROTOCOL)
 
