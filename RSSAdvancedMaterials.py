@@ -106,7 +106,7 @@ for i in newSequence:
     else:
         num = str(j)
     
-    html_file = open('newFeeds/Advan' + num + '.html', 'w', encoding='utf-16')
+    html_file = open('Advan' + num + '.html', 'w', encoding='utf-16')
     html_file.write(html_text)
     html_file.close()
     j = j + 1
