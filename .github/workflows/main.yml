@@ -13,4 +13,5 @@ jobs:
           cache: 'pip'
       - run: pip install -r requirements.txt
       - run: python AdvRSS.py
+      - run: print(parse_rss.entries[0])
           
