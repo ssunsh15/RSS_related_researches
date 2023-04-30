@@ -12,5 +12,9 @@ jobs:
           python-version: '3.10'
           cache: 'pip'
       - run: pip install -r requirements.txt
+        working-directory: path/
       - run: python RSSAdvancedMaterials.py
+        working-directory: path/
       - uses: actions/upload-artifact@v3
+        with:
+          path: path/
