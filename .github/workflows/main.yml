@@ -20,7 +20,7 @@ jobs:
         with:
           path: /home/runner/work/RSS_related_researches/RSS_related_researches
         
-      - run: python RSSAdvancedMaterials.py
+      - run: python /home/runner/work/RSS_related_researches/RSS_related_researches/RSSAdvancedMaterials.py
         working-directory: /home/runner/work/RSS_related_researches/RSS_related_researches
         
       - uses: actions/upload-artifact@v3
