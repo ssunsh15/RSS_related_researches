@@ -52,4 +52,16 @@ for line in lines:
     
 f.close()
 
-print(Database)
+duptest = []
+
+for new in RelatedRSSDOI:
+    for prev in Database:
+        valid = True
+        if new in prev:
+            valid = False
+            break
+        else:
+            continue
+    duptest.append(valid)
+   
+print(duptest)
