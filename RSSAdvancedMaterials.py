@@ -86,6 +86,7 @@ if len(Database) > 1000:            # for database size consistency
 
 for doi in Database:
     f.write(doi + '\n')
+    print(doi)              # ---------------------- artifact test
     
 f.close()
 
