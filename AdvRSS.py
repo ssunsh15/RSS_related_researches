@@ -4,10 +4,9 @@ import requests
 from bs4 import BeautifulSoup
 import pickle
 
-# RSS crawling and parsing from the journal "Advanced Materials" (sort : most recent)
+# ----------------------------- RSS crawling and parsing from the journal "Advanced Materials" (sort : most recent)
 
 parse_rss = feedparser.parse("https://onlinelibrary.wiley.com/feed/15214095/most-recent")
-print(parse_rss.entries[0].title)       # parsing validation
 
 # RSS filtering keywords import from "keywords.txt"
 
@@ -22,7 +21,7 @@ for line in lines:
     
 f.close()
 
-# RSS keyword filtering
+# ----------------------------- RSS keyword filtering
 
 RelatedRSSDOI = []
 
@@ -30,13 +29,21 @@ for p in parse_rss.entries:
     if p == None:
         break
     else:
-        for keyword in keywords:
-            if keyword in p.title:
+        for kw in keywords:
+            if kw in p.title:
                 RelatedRSSDOI.append(p.id)
                 break
             else:
-                continue
+                if kw in p.content[0].value:
+                    RelatedRSSDOI.append(p.id)
+                    break
+                else:
+                    continue
 
-print(RelatedRSSDOI)
+# ----------------------------- RSS duplicated test from pickle database
 
-# RSS duplicated test from pickle database
+AdvMatDOIDatabase = ['10.1002/adma.202205326', '10.1002/adma.202370097', '10.1002/adma.202211579']
+
+with open('AdvMatDOIDatabase.pickle', 'wb') as f:
+    pickle.dump(AdvMatDOIDatabase, f, pickle.HIGHEST_PROTOCOL)
+
