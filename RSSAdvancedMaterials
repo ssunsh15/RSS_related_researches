@@ -41,4 +41,15 @@ for p in parse_rss.entries:
 
 # ----------------------------- RSS duplicated test from txt database
 
+f = open("DatabaseAdvanDOI.txt", 'r')
+lines = f.readlines()
 
+Database = []
+
+for line in lines:
+    key = line.split('\n')
+    Database.append(key[0])
+    
+f.close()
+
+print(Database)
