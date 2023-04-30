@@ -14,5 +14,3 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python RSSAdvancedMaterials.py
       - uses: actions/upload-artifact@v3
-        with:
-          path: path/output
