@@ -43,6 +43,8 @@ for p in parse_rss.entries:
                     break
                 else:
                     continue
+                    
+print(Sequence) #   -----------------------------------------------------------------------------
 
 # ----------------------------- RSS duplicated test from txt database
 
@@ -71,4 +73,4 @@ for new in RelatedRSSDOI:
     newDOI.append(new)
     newSequence.append(Sequence[i])
    
-print(newSequence, newDOI)
+print(newSequence) #   -----------------------------------------------------------------------------
