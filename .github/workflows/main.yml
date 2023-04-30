@@ -1,16 +1,14 @@
 name: RSS feeds
 
 on: [push]
-#  schedule:
-#    - cron: "0 * * * *"
 
 jobs:
   gke-release:
     runs-on: ubuntu-latest
     steps:
-      - name: rss-issues
-        uses: guilhem/rss-issues-action@0.5.2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          feed: "https://onlinelibrary.wiley.com/feed/15214095/most-recent"
+          python-version: '3.10'
+      - run: print('Hello')
           
