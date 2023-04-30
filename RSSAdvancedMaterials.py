@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 parse_rss = feedparser.parse("https://onlinelibrary.wiley.com/feed/15214095/most-recent")
 
-# RSS filtering keywords import from "keywords.txt"
+# RSS filtering keywords import from "DatabaseKeywords.txt"
 
 f = open("DatabaseKeywords.txt", 'r')
 lines = f.readlines()
@@ -23,18 +23,23 @@ f.close()
 # ----------------------------- RSS keyword filtering
 
 RelatedRSSDOI = []
+Sequence = []
+i = -1          # parse_rss.entries[i], i only for related researches
 
 for p in parse_rss.entries:
+    i = i + 1
     if p == None:
         break
     else:
         for kw in keywords:
             if kw in p.title:
                 RelatedRSSDOI.append(p.id)
+                Sequence.append(i)
                 break
             else:
                 if kw in p.content[0].value:
                     RelatedRSSDOI.append(p.id)
+                    Sequence.append(i)
                     break
                 else:
                     continue
@@ -52,16 +57,18 @@ for line in lines:
     
 f.close()
 
-duptest = []
+newDOI = []             # DOIs of new feeds
+newSequence = []        # parse_rss.entries[i], i for new feed & include keywords
+i = -1
 
 for new in RelatedRSSDOI:
+    i = i + 1
     for prev in Database:
-        valid = True
         if new in prev:
-            valid = False
             break
         else:
             continue
-    duptest.append(valid)
+    newDOI.append(new)
+    newSequence.append(Sequence[i])
    
-print(duptest)
+print(newSequence, newDOI)
