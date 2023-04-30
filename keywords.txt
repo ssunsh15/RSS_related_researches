@@ -1,1 +1,8 @@
-['Hydrogel', 'hydrogel', 'Organogel', 'organogel', 'Ionogel', 'ionogel', 'Elastomer', 'elastomer']
+Hydrogel
+hydrogel
+Ionogel
+ionogel
+Organogel
+organogel
+Elastomer
+elastomer
