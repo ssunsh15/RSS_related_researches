@@ -7,14 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
           cache: 'pip'
+          
       - run: pip install -r requirements.txt
         working-directory: /home/runner/work/RSS_related_researches/RSS_related_researches
+        
+      - uses: actions/download-artifact@v3
+        with:
+          path: /home/runner/work/RSS_related_researches/RSS_related_researches
+        
       - run: python RSSAdvancedMaterials.py
         working-directory: /home/runner/work/RSS_related_researches/RSS_related_researches
+        
       - uses: actions/upload-artifact@v3
         with:
           path: /home/runner/work/RSS_related_researches/RSS_related_researches
