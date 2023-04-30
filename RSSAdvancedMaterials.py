@@ -81,6 +81,11 @@ f = open("DatabaseAdvanDOI.txt", 'w')
 
 Database = newDOI + Database
 
+if len(Database) > 1000:            # for database size consistency
+    Database = Database[0:800]
+else:
+    continue
+
 for doi in Database:
     f.write(doi + '\n')
     
