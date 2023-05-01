@@ -1,1 +1,11 @@
+name: Database Update
 
+on: [push]
+
+jobs:
+  gke-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          path: /home/runner/work/RSS_related_researches/RSS_related_researches
