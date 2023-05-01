@@ -9,3 +9,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           path: /home/runner/work/RSS_related_researches/RSS_related_researches
+          
+      - uses: actions/upload-artifact@v3
+        with:
+          path: /home/runner/work/RSS_related_researches/RSS_related_researches
